@@ -33,7 +33,7 @@ import {Tile as TileLayer, Vector as VectorLayer} from 'ol/layer.js';import XYZ 
 import {OSM, Vector as VectorSource} from 'ol/source.js';
 import Overlay from 'ol/Overlay';
 import {fromLonLat, toLonLat} from 'ol/proj.js';
-import {defaults as defaultControls, Control, fullScreen, ZoomSlider, ScaleLine, Zoom} from 'ol/control.js';
+import {defaults as defaultControls, Control, FullScreen, ZoomSlider, ScaleLine, Zoom} from 'ol/control.js';
 import {inherits} from 'ol/util.js';
 import Feature from 'ol/Feature.js';
 import Geolocation from 'ol/Geolocation.js';

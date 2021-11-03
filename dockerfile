@@ -1,9 +1,7 @@
-FROM node:10.19 AS build-stage
+FROM node:10.19 as build-stage
 WORKDIR /app
-COPY package.json ./
-RUN node -v
-RUN npm -v
-RUN npm i
+COPY package*.json ./
+RUN npm install
 COPY . .
 RUN npm run build
 
