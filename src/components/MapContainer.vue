@@ -123,7 +123,7 @@ import MapView from '@/components/MapView.vue'
 import Legends from '@/components/mapControls/legends/Legends.vue'
 import LoadScreen from '@/components/mapControls/LoadScreen.vue'
 import NavDrawer from '@/components/mapControls/NavDrawer.vue'
-import Fullscreen from "vue-fullscreen"
+import fullscreen from "vue-fullscreen"
 
 // Herramientas del mapa
 import Select from '@/components/mapTools/select/Select.vue'
@@ -156,7 +156,7 @@ export default{
   components:{
       MapView,
       NavDrawer,
-      Fullscreen,
+      fullscreen,
       Measure,
       Select,
       Layers,
