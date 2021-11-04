@@ -1,4 +1,4 @@
-FROM node:lts as build-stage
+FROM node:12.0 as build-stage
 WORKDIR /app
 COPY package*.json ./
 RUN npm -v
