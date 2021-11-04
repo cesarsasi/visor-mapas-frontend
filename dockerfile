@@ -1,6 +1,9 @@
 FROM node:lts as build-stage
 WORKDIR /app
 COPY package*.json ./
+RUN npm -v
+RUN node -v
+
 RUN npm install
 COPY . .
 RUN npm run build
