@@ -8,18 +8,18 @@
 - [ApexCharts.js (Vue wrapper)](https://github.com/apexcharts/vue-apexcharts) ([MIT License](https://github.com/apexcharts/vue-apexcharts/blob/master/LICENSE))
 
 ## Requisitos
-- NPM 6.9.x o superior
+- NPM 6.9.0 , NodeJs 12.0
 
 ## Guía de instalación
 1. Clonar el repositorio
 ```shell
-git clone https://github.com/citiaps/visor-mapas-frontend.git
+git clone https://github.com/cesarsasi/visor-mapas-frontend
 ```
 
 2. Ingresar a la carpeta del repositorio e instalar dependencias
 ```shell
 cd visor-mapas-frontend
-npm install
+npm i
 ```
 
 3. Configurar URL de las variables dentro de los archivos ocultos .env.development y .env.production
