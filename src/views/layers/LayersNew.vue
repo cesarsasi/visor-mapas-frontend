@@ -73,7 +73,7 @@
         </template>
 
         <label v-if="layerCreationMode=='file'" for="filename">Nombre del archivo</label>
-        <input v-if="layerCreationMode=='file'" id="filename" v-model="layer.provider.geoserver_data.filename" type="text"
+        <input v-if="layerCreationMode=='file'" id="filename" v-model="layer.geoserver_data.filename" type="text"
         name="nombre del archivo" :class="{'error' : errors.has('nombre del archivo') }" v-validate="'required'"
         :placeholder="[[errors.has('nombre del archivo') ? errors.first('nombre del archivo') : 'Nombre del archivo']]"/>
 
@@ -84,7 +84,7 @@
         <p style="font-size: 0.9em;" v-if="layerCreationMode=='geoserver'">Es necesario especificar el espacio de trabajo de GeoServer donde se encuentra la capa</p> -->
 
         <label v-if="layerCreationMode!='file'">Url</label>
-        <input v-if="layerCreationMode!='file'" v-model="layer.provider.url" placeholder="Ingresa la url del servicio">
+        <input v-if="layerCreationMode!='file'" v-model="layer.url" placeholder="Ingresa la url del servicio">
         <!--
         <label v-if="layerCreationMode=='shapefile'" for="coordinatesSystem">Sistema de coordenadas</label>
         <input v-if="layerCreationMode=='shapefile'" id="coordinatesSystem" v-model="layer.provider.geoserver_data.coordinates_system" type="text"
@@ -177,7 +177,7 @@ export default{
                     if(that.layerCreationMode == 'file') {
                         that.postFile();
                     } else {
-                        that.layer.provider.name=that.layerCreationMode
+                        that.layer.name=that.layerCreationMode
                         /*
                         that.layer.provider.geoserver_data.filename = that.cleanString(that.layer.provider.geoserver_data.filename.toLowerCase());
                         that.layer.provider.geoserver_data.workspace = that.cleanString(that.layer.provider.geoserver_data.workspace.toLowerCase());
@@ -191,13 +191,13 @@ export default{
         },
         onHandleFileChange: function() {
             this.file = this.$refs.file.files[0];
-            this.layer.provider.geoserver_data.filename = this.file.name.split('.')[0];
+            this.layer.geoserver_data.filename = this.file.name.split('.')[0];
         },
         postFile: function() {
-            this.layer.provider.name=this.layerCreationMode
-            this.layer.provider.geoserver_data.filename = this.cleanString(this.layer.provider.geoserver_data.filename.toLowerCase());
-            this.layer.provider.geoserver_data.workspace = process.env.VUE_APP_DEFAULT_WORKSPACE
-            this.layer.provider.geoserver_data.datastore = process.env.VUE_APP_DEFAULT_WORKSPACE
+            this.layer.name=this.layerCreationMode
+            this.layer.geoserver_data.filename = this.cleanString(this.layer.geoserver_data.filename.toLowerCase());
+            this.layer.geoserver_data.workspace = process.env.VUE_APP_DEFAULT_WORKSPACE
+            this.layer.geoserver_data.datastore = process.env.VUE_APP_DEFAULT_WORKSPACE
             
             var that = this;
             let formData = new FormData();
@@ -206,10 +206,10 @@ export default{
             formData.append('workspace', process.env.VUE_APP_DEFAULT_WORKSPACE);
             formData.append('datastore', process.env.VUE_APP_DEFAULT_WORKSPACE);
 
-            if(!this.layer.provider.geoserver_data.filename.includes('.zip')) {
-                this.layer.provider.geoserver_data.filename = this.layer.provider.geoserver_data.filename + '.zip';
+            if(!this.layer.geoserver_data.filename.includes('.zip')) {
+                this.layer.geoserver_data.filename = this.layer.geoserver_data.filename + '.zip';
             }
-            formData.append('filename', this.layer.provider.geoserver_data.filename);
+            formData.append('filename', this.layer.geoserver_data.filename);
 
             this.$http.post(this.$store.getters.backendurl + 'api/v1/uploads/single',
             formData,
@@ -220,10 +220,10 @@ export default{
             }
             ).then(function(){
                 that.postLayer();
-                that.layer.provider.geoserver_data.filename = that.layer.provider.geoserver_data.filename.replace('.zip', '')
+                that.layer.geoserver_data.filename = that.layer.geoserver_data.filename.replace('.zip', '')
             })
             .catch(function(){
-                that.layer.provider.geoserver_data.filename = that.layer.provider.geoserver_data.filename.replace('.zip', '')
+                that.layer.geoserver_data.filename = that.layer.geoserver_data.filename.replace('.zip', '')
             });
         }
     },
@@ -243,7 +243,7 @@ export default{
                 this.filename = '';
             } else {
                 if(this.file != '') {
-                    this.layer.provider.geoserver_data.filename = this.file.name.split('.')[0];
+                    this.layer.geoserver_data.filename = this.file.name.split('.')[0];
                 }
             }
         }

@@ -27,7 +27,7 @@ npm i
 # URL base de API rest del backend
 VUE_APP_API_URL=http://localhost:2000/ 
 # URL base de GeoServer
-VUE_APP_GEOSERVER_URL=http://localhost:8080/geoserver/
+VUE_APP_GEOSERVER_URL=http://localhost:8600/geoserver/
 # URL base de Nominatim
 VUE_APP_API_NOMINATIM=http://localhost:7070/
 # URL de maptiles propios (no OpenStreetMap)
@@ -132,7 +132,7 @@ A continuación se muestra un ejemplo de los archivos de configuración. Notar q
 
 ```bash
 VUE_APP_API_URL=http://localhost:2000/
-VUE_APP_GEOSERVER_URL=http://localhost:8080/geoserver/
+VUE_APP_GEOSERVER_URL=http://localhost:8600/geoserver/
 VUE_APP_API_NOMINATIM=http://localhost:7070/
 VUE_APP_MAPTILES=http://localhost:82/{z}/{x}/{y}.jpg
 VUE_APP_DEFAULT_WORKSPACE=visor_upload

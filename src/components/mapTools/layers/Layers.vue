@@ -65,7 +65,7 @@ export default {
     },
     getLayerInfo: function(categoryIndex, layerIndex){
       var layer=this.$store.getters.getLayers[categoryIndex].layers[layerIndex]
-      if(layer.provider.name=="arcgis"){
+      if(layer.name=="arcgis"){
         this.arcgisFeatures(layer)
       }
       else this.geoserverFeatures(layer)
@@ -73,8 +73,8 @@ export default {
     geoserverFeatures: function(layer){      
       var totalRecords=0
       var that=this
-      var url=layer.provider.parsed_url.protocol+'://'+layer.provider.parsed_url.host+':'+layer.provider.parsed_url.port+layer.provider.parsed_url.path+
-      '?service=WFS&version=2.0.0&request=GetFeature&typeNames='+layer.provider.geoserver_data.workspace+':'+layer.provider.geoserver_data.filename+'&count=1&outputFormat=application%2Fjson'
+      var url=layer.parsed_url.protocol+'://'+layer.parsed_url.host+':'+layer.parsed_url.port+layer.parsed_url.path+
+      '?service=WFS&version=2.0.0&request=GetFeature&typeNames='+layer.geoserver_data.workspace+':'+layer.geoserver_data.filename+'&count=1&outputFormat=application%2Fjson'
       this.$http.get(url)
       .then(function(response){
           totalRecords=response.data.totalFeatures
@@ -88,10 +88,10 @@ export default {
       var totalRecords=0
       var subLayers=[]
       var that=this
-      that.$http.get(layer.provider.url+'?f=json&pretty=true')
+      that.$http.get(layer.url+'?f=json&pretty=true')
       .then(function(response){
         subLayers=response.data.layers
-        that.$http.get(layer.provider.url+'/0/query?where=objectid>0&returnCountOnly=true&f=pjson')
+        that.$http.get(layer.url+'/0/query?where=objectid>0&returnCountOnly=true&f=pjson')
         .then(function(response){
           totalRecords=response.data.count
           that.executeMapToolAction('attributesTable', 'paginationInfo', {offset:0, totalRecords: totalRecords, layer:layer, layerId: 0, subLayers: subLayers})
