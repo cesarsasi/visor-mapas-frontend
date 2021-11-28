@@ -2,20 +2,32 @@ export const restLayer = {
     data() {
         return {
             layer: {
+              desc: '',
+              geoserver_data: {
+                filename: '',
+                coordinatessystem: 'EPSG:3857',
+                workspace: '',
+                datastore: ''
+              },
               id_category: '-1',
               name: '',
-              desc: '',
               provider:{
                 name: '',
                 url: '',
-                arcgisLayers: [],
-                geoserver_data: {
+                parsedurl: [],
+                geoserverdata: {
                     filename: '',
-                    coordinates_system: 'EPSG:3857',
+                    coordinatessystem: 'EPSG:3857',
                     workspace: '',
-                    datastore: ''
+                    datastore: '',
+                    maxfeatures: '',
+                    outputformat: '',
+                    request: '',
+                    service: '',
+                    version: '',
+                    workspace: ''
                 }
-              },
+              }
             },
             layers: [],
         }
@@ -26,6 +38,7 @@ export const restLayer = {
         this.$http.get(this.$store.getters.backendurl + 'api/v1/layers/' + this.$route.params.idLayer)
         .then(function (response) {
             that.layer = response.data;
+            console.log('get Layer',that.layer);
         })
         .catch(function (error) {
             console.log(error)

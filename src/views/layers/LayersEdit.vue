@@ -39,9 +39,9 @@
 
         <label for="desc">Descripción</label>
         <textarea id="desc" v-model="layer.desc" placeholder="Ingresa la descripción de la capa"></textarea>
-        <div v-if="layer.name=='file'">
+        <div v-if="layer.provider.name=='file'">
         <label for="filename">Nombre del archivo</label>
-        <input id="filename" v-model="layer.geoserver_data.filename" type="text"
+        <input id="filename" v-model="layer.provider.geoserver_data.filename" type="text"
         name="nombre del archivo" :class="{'error' : errors.has('nombre del archivo') }" v-validate="'required'"
         :placeholder="[[errors.has('nombre del archivo') ? errors.first('nombre del archivo') : 'Nombre de la capa en GeoServer']]"/>
 
@@ -53,13 +53,13 @@
         -->
         
         <label for="workspace">Espacio de trabajo</label>
-        <input id="workspace" v-model="layer.geoserver_data.workspace" type="text"
+        <input id="workspace" v-model="layer.provider.geoserver_data.workspace" type="text"
         name="espacio de trabajo" :class="{'error' : errors.has('espacio de trabajo') }" v-validate="'required'"
         :placeholder="[[errors.has('espacio de trabajo') ? errors.first('espacio de trabajo') : 'Espacio de trabajo de la capa en GeoServer']]"/>
         </div> 
         <div v-else>
         <label for="name">Url</label>
-        <input id="url" v-model="layer.url" type="text"
+        <input id="url" v-model="layer.provider.url" type="text"
         name="url" :class="{'error' : errors.has('url') }" v-validate="'required'"
         :placeholder="[[errors.has('url') ? errors.first('url') : 'Ingresa la url de la capa']]"/>
         </div>

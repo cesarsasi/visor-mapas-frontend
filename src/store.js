@@ -190,6 +190,7 @@ export default new Vuex.Store({
     // Agrega una nueva capa a la lista de capas seleccionadas por el usuario para visualizarse en el mapa
     addActiveLayer(state, layer) {
       state.activeLayers.push(layer)
+      console.log('add layer to map',layer)
     },
     // Remueve una capa de la lista de capas seleccionadas por el usuario para visualizarse en el mapa
     removeActiveLayer(state, layer) {

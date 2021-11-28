@@ -16,10 +16,13 @@
         <p v-if="layer.desc">{{layer.desc}}</p>
         <br>
         <strong>Datos GeoServer</strong>
-        <p><label for="filename">Nombre de archivo: </label> <span id="filename">{{layer.geoserver_data.filename}}</span></p>
-        <p><label for="coordsystem">Sistema de coordenadas: </label> <span id="coordsystem">{{layer.geoserver_data.coordinatessystem}}</span></p>
-        <p><label for="workspace">Espacio de trabajo: </label> <span id="workspace">{{layer.geoserver_data.workspace}}</span></p>
-        <p><label for="datastore">Almacen de datos: </label> <span id="datastore">{{layer.geoserver_data.datastore}}</span></p>
+        <p> <label for="filename">Nombre de archivo: </label> <span id="filename">{{layer.provider.geoserverdata.filename}}</span></p>
+        
+        <p><label for="coordsystem">Sistema de coordenadas: </label> <span id="coordsystem">{{layer.provider.geoserverdata.coordinatessystem}}</span></p>
+
+        <p><label for="workspace">Espacio de trabajo: </label> <span id="workspace">{{layer.provider.geoserverdata.workspace}}</span></p>
+        
+        <p><label for="datastore">Almacen de datos: </label> <span id="datastore">{{layer.provider.geoserverdata.datastore}}</span></p>
 
         <br>
         <strong>Mapas en los cuales esta capa se encuentra asignada</strong>

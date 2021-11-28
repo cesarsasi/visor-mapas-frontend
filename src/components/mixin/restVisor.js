@@ -10,7 +10,7 @@ export const restVisor = {
             this.$http.get(this.$store.getters.backendurl + 'api/v1/visor/maps')
             .then(function (response) {
                 that.mapsAssignedToUserID = response.data;
-                console.log(that.mapsAssignedToUserID)
+                console.log('maps', that.mapsAssignedToUserID)
             })
             .catch(function (error) {
                 console.log(error)

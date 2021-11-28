@@ -20,9 +20,10 @@ export const layers = {
     methods: {
       
       addLayerWMS: function (layer) {
-        console.log("layer",layer)
         if(layer.provider.name=="arcgis"){
+          /* Argis layer configuration */
           var arcgisUrl = layer.provider.url; 
+          console.log("url arcgis",layer.provider.url)
           var arcgisLayer = 
             new ImageLayer({
               source: new ImageArcGISRest({
@@ -33,8 +34,8 @@ export const layers = {
               opacity: 1
             });
 
-
-/*             var vectorSource = new VectorSource({
+            /* Comentar desde aqui para ignorar vector, se puede profudizar en detalles de la capa */
+            var vectorSource = new VectorSource({
               format: new EsriJSON(),
               url: function(extent) {
                 return arcgisUrl + '/0/query/?f=json&' +
@@ -46,14 +47,16 @@ export const layers = {
                     '&outSR=102100';
               }
             });
+            /* Comentar hasta aqui*/
             var arcgisLayer = new VectorLayer({
               source: vectorSource
-            }); */
+            }); 
             this.map.addLayer(arcgisLayer)
             layer.arcgisLayer=arcgisLayer
         }
         else {
-/*           var vectorSource = new VectorSource({
+          /* Geoserver layer configuration */
+          /*var vectorSource = new VectorSource({
             format: new GeoJSON({ featureProjection: "EPSG:3857" }),
             url: layer.provider.url+'&srsname=EPSG:3857'
           }); 
@@ -63,18 +66,20 @@ export const layers = {
           }) 
 
           this.map.addLayer(vector) */
-          var url=layer.provider.parsed_url.protocol+'://'+layer.provider.parsed_url.host+':'+layer.provider.parsed_url.port+layer.provider.parsed_url.path
-          console.log("url",url)
+          var url="https://ahocevar.com/geoserver/wms"
+          console.log("url geoserver",url)
+          console.log("layer geoserver",layer)
           // Origen de la capa
           var wmsSource = new TileWMS({
             url: url,
             params: {
-              'LAYERS': layer.provider.geoserver_data.workspace + ':' + layer.provider.geoserver_data.filename, 
+              'LAYERS': 'topp:states',
               'TILED': true,
+              /*'LAYERS': layer.provider.geoserver_data.workspace + ':' + layer.provider.geoserver_data.filename, 
               'VERSION':'1.1.1',
               'LAYER_PROJ': '3857',
               'LAYER_WORK': layer.provider.geoserver_data.workspace,
-              'LAYER_NAME': layer.provider.geoserver_data.filename
+              'LAYER_NAME': layer.provider.geoserver_data.filename*/
             },
             serverType: 'geoserver',
             crossOrigin: 'anonymous',

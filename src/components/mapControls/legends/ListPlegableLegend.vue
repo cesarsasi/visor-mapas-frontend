@@ -47,8 +47,8 @@ export default {
             '&FORMAT=image/png' + 
             '&WIDTH=100' +
             '&HEIGHT=20' + 
-            '&LAYER=' +  this.layer.geoserver_data.workspace + ':' + this.layer.geoserver_data.filename +
-            '&LAYER_WORK=' + this.layer.geoserver_data.workspace
+            '&LAYER=' +  this.layer.provider.geoserver_data.workspace + ':' + this.layer.provider.geoserver_data.filename +
+            '&LAYER_WORK=' + this.layer.provider.geoserver_data.workspace
 
             return url+params
         }
