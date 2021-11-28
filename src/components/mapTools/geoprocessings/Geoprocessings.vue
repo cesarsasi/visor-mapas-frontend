@@ -127,7 +127,7 @@ export default {
       // Nombre de las capas presentes en el mapa
       
       this.activeLayers.forEach(layer => {
-        this.geoprocessingBody.layers.push(layer.provider.geoserver_data.workspace + "." + layer.provider.geoserver_data.filename)
+        this.geoprocessingBody.layers.push(layer.provider.geoserverdata.workspace + "." + layer.provider.geoserverdata.filename)
       });
 
       this.geoprocessingBody.geometry.type = this.drawSelected.code

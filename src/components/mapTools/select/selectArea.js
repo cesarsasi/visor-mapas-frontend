@@ -217,7 +217,7 @@ export const selectArea = {
               var extent = polyGeom.getExtent()
               vectorSource.forEachFeatureIntersectingExtent(extent, function(feature) {
                 let data = {
-                  layerName: layer.provider.geoserver_data.filename,
+                  layerName: layer.provider.geoserverdata.filename,
                   properties: feature.getProperties(),
                 }
 

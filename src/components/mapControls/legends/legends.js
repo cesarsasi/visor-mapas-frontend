@@ -15,8 +15,8 @@ export const legends = {
           '&FORMAT=image/png' + 
           '&WIDTH=100' +
           '&HEIGHT=20' + 
-          '&LAYER=' +  layer.provider.geoserver_data.workspace + ':' + layer.provider.geoserver_data.filename +
-          '&LAYER_WORK=' + layer.provider.geoserver_data.workspace
+          '&LAYER=' +  layer.provider.geoserverdata.workspace + ':' + layer.provider.geoserverdata.filename +
+          '&LAYER_WORK=' + layer.provider.geoserverdata.workspace
 
           return url+params
       }

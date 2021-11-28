@@ -89,15 +89,10 @@
         <p style="font-size: 0.9em;" v-if="layerCreationMode=='shapefile'">Es necesario especificar el sistema de coordenadas de la capa si se quiere agregar a GeoServer. Si no es correcto, la capa no será procesada correctamente.</p>
         
         <label v-if="layerCreationMode=='geoserver'" for="workspace">Espacio de trabajo</label>
-        <input v-if="layerCreationMode=='geoserver'" id="workspace" v-model="layer.provider.geoserverdata.workspace" type="text"
-        name="espacio de trabajo" :class="{'error' : errors.has('espacio de trabajo') }" v-validate="'required'"
-        :placeholder="[[errors.has('espacio de trabajo') ? errors.first('espacio de trabajo') : 'Espacio de trabajo de la capa en GeoServer']]"/>
-        <p style="font-size: 0.9em;" v-if="layerCreationMode=='geoserver'">Es necesario especificar el espacio de trabajo de GeoServer donde se encuentra la capa</p> 
+        <input v-if="layerCreationMode=='geoserver'" v-model="layer.provider.geoserverdata.workspace" placeholder="Espacio de trabajo de la capa en GeoServer">
 
         <label v-if="layerCreationMode=='geoserver'" for="datastore">Almacen de datos</label>
-        <input v-if="layerCreationMode=='geoserver'" id="datastore" v-model="layer.provider.geoserverdata.datastore" type="text"
-        name="almacen de datos" :class="{'error' : errors.has('almacen de datos') }" v-validate="'required'"
-        :placeholder="[[errors.has('almacen de datos') ? errors.first('almacen de datos') : 'Almacen de datos de la capa en GeoServer']]"/>
+        <input v-if="layerCreationMode=='geoserver'" v-model="layer.provider.geoserverdata.datastore" placeholder="Almacen de datos de la capa en GeoServer">
 
 
         <div class="container-action-left" style="justify-content: start;">
@@ -171,12 +166,15 @@ export default{
         },
         onClickGoNext: function() {
             var that = this;
+            console.log('entro');
             this.$validator.validateAll()
             .then(function (response) {
                 if(response) {
                     if(that.layerCreationMode == 'file') {
+                        console.log('file');
                         that.postFile();
                     } else {
+                        console.log('otro');
                         that.layer.provider.name=that.layerCreationMode
                         that.layer.provider.geoserverdata.filename = that.cleanString(that.layer.provider.geoserverdata.filename.toLowerCase());
                         that.layer.provider.geoserverdata.workspace = that.cleanString(that.layer.provider.geoserverdata.workspace.toLowerCase());

@@ -25,7 +25,7 @@
                 >
                     {{item.name}}
                 </router-link>
-                <span v-if="item.geoserver_data" v-bind:key="item.index" class="list-item-sub-1" style="grid-column-end: 3;">{{item.geoserver_data.filename}}</span>
+                <span v-if="item.geoserverdata" v-bind:key="item.index" class="list-item-sub-1" style="grid-column-end: 3;">{{item.geoserverdata.filename}}</span>
                 <span v-bind:key="item.index" class="list-item-separator"></span>
 
             </template>

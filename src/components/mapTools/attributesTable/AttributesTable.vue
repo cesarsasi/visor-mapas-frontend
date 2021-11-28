@@ -90,7 +90,7 @@ export default {
             }
             else{
                 var url=this.layer.provider.parsed_url.protocol+'://'+this.layer.provider.parsed_url.host+':'+this.layer.provider.parsed_url.port+this.layer.provider.parsed_url.path+
-                '?service=WFS&version=2.0.0&request=GetFeature&typeNames='+this.layer.provider.geoserver_data.workspace+':'+this.layer.provider.geoserver_data.filename+
+                '?service=WFS&version=2.0.0&request=GetFeature&typeNames='+this.layer.provider.geoserverdata.workspace+':'+this.layer.provider.geoserverdata.filename+
                 '&count='+this.recordsPerPage+'&startIndex='+this.offset+'&outputFormat=application%2Fjson'
                 this.$http.get(url)
                 .then(function(response){

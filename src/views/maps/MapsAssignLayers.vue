@@ -45,7 +45,7 @@
             v-for="(item) in allLayers" >
             <div class="list-item-item">
                 <span v-bind:key="item.index" class="list-item-name">{{item["name"]}}</span>
-                <span v-bind:key="item.index" class="list-item-sub-1">{{item["geoserver_data"]["filename"]}}</span>
+                <span v-bind:key="item.index" class="list-item-sub-1">{{item["geoserverdata"]["filename"]}}</span>
                 <span v-bind:key="item.index" class="list-item-sub-3">
                     <button v-bind:key="item.index" v-if="!item.isAssigned" class="btn btn-secondary" v-on:click="postRelMapLayer(item)">Asignar</button>
                 </span>
@@ -57,7 +57,7 @@
             <template 
             v-for="(item) in allLayersFiltered">
                 <span v-bind:key="item.index" class="list-item-name">{{item["name"]}}</span>
-                <span v-bind:key="item.index" class="list-item-sub-1">{{item["geoserver_data"]["filename"]}}</span>
+                <span v-bind:key="item.index" class="list-item-sub-1">{{item["geoserverdata"]["filename"]}}</span>
                 <span v-bind:key="item.index" class="list-item-sub-3">
                     <button v-bind:key="item.index" v-if="!item.isAssigned" class="btn btn-secondary" v-on:click="postRelMapLayer(item)">Asignar</button>
                 </span>
@@ -75,7 +75,7 @@
         <assing-box v-else 
         :list="allLayersFiltered" 
         :title="['name']" 
-        :subTitle="['geoserver_data']"
+        :subTitle="['geoserverdata']"
         :subTitle2="['filename']" 
         :isAssingned="['isAssigned']" 
         @assingMethod="postRelMapLayer" 
@@ -103,7 +103,7 @@
             <template 
             v-for="(item) in assignedLayers" >
                 <span v-bind:key="item.index" class="list-item-name">{{item.name}}</span>
-                <span v-bind:key="item.index" class="list-item-sub-1">{{item.geoserver_data.filename}}</span>
+                <span v-bind:key="item.index" class="list-item-sub-1">{{item.geoserverdata.filename}}</span>
                 <span v-bind:key="item.index" class="list-item-sub-3">
                     <button class="btn btn-secondary" v-on:click="deleteRelMapLayer(item)">No asignar</button>
                 </span>
@@ -188,7 +188,7 @@ export default{
             }
             return this.allLayers.filter(item => {
                 return item.name.toLowerCase().includes(this.inputLayer.toLowerCase()) ||
-                item.geoserver_data.filename.toLowerCase().includes(this.inputLayer.toLowerCase())
+                item.geoserverdata.filename.toLowerCase().includes(this.inputLayer.toLowerCase())
             })
         }
     },

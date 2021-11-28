@@ -66,26 +66,26 @@ export const layers = {
           }) 
 
           this.map.addLayer(vector) */
-          var url="https://ahocevar.com/geoserver/wms"
+          var url=layer.provider.url
           console.log("url geoserver",url)
           console.log("layer geoserver",layer)
           // Origen de la capa
           var wmsSource = new TileWMS({
             url: url,
             params: {
-              'LAYERS': 'topp:states',
+              'LAYERS': layer.provider.geoserverdata.workspace + ':' + layer.provider.geoserverdata.datastore,
               'TILED': true,
-              /*'LAYERS': layer.provider.geoserver_data.workspace + ':' + layer.provider.geoserver_data.filename, 
               'VERSION':'1.1.1',
               'LAYER_PROJ': '3857',
-              'LAYER_WORK': layer.provider.geoserver_data.workspace,
-              'LAYER_NAME': layer.provider.geoserver_data.filename*/
+              /*
+              'LAYER_WORK': layer.provider.geoserverdata.workspace,
+              'LAYER_NAME': layer.provider.geoserverdata.filename*/
             },
             serverType: 'geoserver',
             crossOrigin: 'anonymous',
             //transition: 0,
             // Atributos personalizados
-            queryLayers: layer.provider.geoserver_data.workspace + ':' + layer.provider.geoserver_data.filename,
+            queryLayers: layer.provider.geoserverdata.workspace + ':' + layer.provider.geoserverdata.filename,
           })
 
           // Capa formada para OpenLayers

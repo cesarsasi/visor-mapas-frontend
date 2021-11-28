@@ -74,7 +74,7 @@ export default {
       var totalRecords=0
       var that=this
       var url=layer.provider.parsed_url.protocol+'://'+layer.provider.parsed_url.host+':'+layer.provider.parsed_url.port+layer.provider.parsed_url.path+
-      '?service=WFS&version=2.0.0&request=GetFeature&typeNames='+layer.provider.geoserver_data.workspace+':'+layer.provider.geoserver_data.filename+'&count=1&outputFormat=application%2Fjson'
+      '?service=WFS&version=2.0.0&request=GetFeature&typeNames='+layer.provider.geoserverdata.workspace+':'+layer.provider.geoserverdata.filename+'&count=1&outputFormat=application%2Fjson'
       this.$http.get(url)
       .then(function(response){
           totalRecords=response.data.totalFeatures

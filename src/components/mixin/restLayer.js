@@ -24,8 +24,7 @@ export const restLayer = {
                     outputformat: '',
                     request: '',
                     service: '',
-                    version: '',
-                    workspace: ''
+                    version: ''
                 }
               }
             },

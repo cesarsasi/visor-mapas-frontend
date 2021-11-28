@@ -41,19 +41,19 @@
         <textarea id="desc" v-model="layer.desc" placeholder="Ingresa la descripción de la capa"></textarea>
         <div v-if="layer.provider.name=='file'">
         <label for="filename">Nombre del archivo</label>
-        <input id="filename" v-model="layer.provider.geoserver_data.filename" type="text"
+        <input id="filename" v-model="layer.provider.geoserverdata.filename" type="text"
         name="nombre del archivo" :class="{'error' : errors.has('nombre del archivo') }" v-validate="'required'"
         :placeholder="[[errors.has('nombre del archivo') ? errors.first('nombre del archivo') : 'Nombre de la capa en GeoServer']]"/>
 
         <!--
         <label for="coordinatesSystem">Sistema de coordenadas</label>
-        <input id="coordinatesSystem" v-model="layer.provider.geoserver_data.coordinates_system" type="text"
+        <input id="coordinatesSystem" v-model="layer.provider.geoserverdata.coordinates_system" type="text"
         name="sistema de coordenadas" :class="{'error' : errors.has('sistema de coordenadas') }" v-validate="'required'"
         :placeholder="[[errors.has('sistema de coordenadas') ? errors.first('sistema de coordenadas') : 'Sistema de coordenadas de la capa']]"/>
         -->
         
         <label for="workspace">Espacio de trabajo</label>
-        <input id="workspace" v-model="layer.provider.geoserver_data.workspace" type="text"
+        <input id="workspace" v-model="layer.provider.geoserverdata.workspace" type="text"
         name="espacio de trabajo" :class="{'error' : errors.has('espacio de trabajo') }" v-validate="'required'"
         :placeholder="[[errors.has('espacio de trabajo') ? errors.first('espacio de trabajo') : 'Espacio de trabajo de la capa en GeoServer']]"/>
         </div> 
