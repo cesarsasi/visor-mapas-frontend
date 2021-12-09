@@ -3,6 +3,8 @@
     <div v-if="!isFixed" :class="{widgetHeader : !isFixed}" id="layersIDheader">
         <p style="font-weight: bold;">Lista de capas</p>
         <div>
+          <button  class="btn btn-primary" v-on:click="onClickModalNewLayer()">Añadir capa</button>
+
           <button class="btn btn-info" v-on:click="isHidden = !isHidden">
             <font-awesome-icon v-if="!isHidden" icon="minus"></font-awesome-icon>
             <font-awesome-icon v-else icon="plus"></font-awesome-icon>
@@ -11,6 +13,7 @@
             <font-awesome-icon icon="times"></font-awesome-icon>
           </button>
         </div>
+        
     </div>
     <div :class="{widgetBody : !isFixed}" v-show="!isHidden">
       <div :class="{resizable : !isFixed}">
@@ -21,8 +24,7 @@
         v-on:selectLayer="onClickSelectLayer"
         v-on:removeLayer="onClickRemoveLayer"
         v-on:layerAttributes="getLayerInfo"
-        >
-        </ListPlegable>
+        ></ListPlegable>
       </div>
     </div>
   </div>
@@ -32,6 +34,7 @@
 import ListPlegable from '@/components/mapTools/layers/ListPlegable.vue'
 import {draggableDiv} from '@/components/mixin/draggableDiv.js'
 import {vuex} from '@/components/mixin/vuex.js'
+import axios from 'axios'
 
 export default {
   name: 'HelloWorld',
@@ -88,16 +91,24 @@ export default {
       var totalRecords=0
       var subLayers=[]
       var that=this
-      that.$http.get(layer.provider.url+'?f=json&pretty=true')
+      
+      that.$http.get(layer.provider.url+'?f=json&pretty=true',{
+        headers: {'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json','Access-Control-Allow-Credentials': true
+      }})
       .then(function(response){
         subLayers=response.data.layers
-        that.$http.get(layer.provider.url+'/0/query?where=objectid>0&returnCountOnly=true&f=pjson')
+        that.$http.get(layer.provider.url+'/0/query?where=objectid>0&returnCountOnly=true&f=pjson',{
+        headers: {'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json','Access-Control-Allow-Credentials': true
+      }})
         .then(function(response){
           totalRecords=response.data.count
           that.executeMapToolAction('attributesTable', 'paginationInfo', {offset:0, totalRecords: totalRecords, layer:layer, layerId: 0, subLayers: subLayers})
           that.selectMapTool('attributesTable', true)
         })
       })
+    },
+    onClickModalNewLayer: function(){
+      this.$router.push('/capas/nueva-capa')
     }
   },
   updated () {

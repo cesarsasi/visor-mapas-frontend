@@ -1,5 +1,7 @@
 # visor-mapas-frontend
 
+# PRIMERO LEER README REPO SCRIPTS (.env en raiz necesarios .env.production y .env.development)
+
 ## Visor de mapas y panel de administración
 
 ### Herramientas utilizadas

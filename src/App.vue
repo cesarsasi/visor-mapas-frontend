@@ -18,6 +18,7 @@
 
   </body>
 </template>
+
 <script>
 import HeaderCollapsible from '@/components/HeaderCollapsible.vue'
 import FooterFixed from '@/components/FooterFixed.vue'

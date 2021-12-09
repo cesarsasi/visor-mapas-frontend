@@ -48,6 +48,7 @@ Vue.use(require('vue-shortkey'))
 import VueHtml2Canvas from 'vue-html2canvas';
 Vue.use(VueHtml2Canvas);
 
+
 import { 
   faChevronDown, 
   faChevronUp, 

@@ -7,6 +7,7 @@
         >
         </Breadcrumb>
         <h2>Lista de capas</h2>
+        
     </div>
     
     <div class="container-body">
