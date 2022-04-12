@@ -7,7 +7,7 @@ services:
     container_name: visor-citiaps
     build:
       context: .
-      dockerfile: dockerfile
+      dockerfile: buildLocalNgnx.Dockerfile
     volumes:
       - web-root:/build
     command: mv /app/dist/ /build
